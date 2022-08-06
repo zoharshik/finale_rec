@@ -1,4 +1,4 @@
-package co.il.dmobile.myapplication_2;
+package co.il.dmobile.recipes;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;

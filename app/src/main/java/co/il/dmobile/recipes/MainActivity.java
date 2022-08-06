@@ -1,4 +1,4 @@
-package co.il.dmobile.myapplication_2;
+package co.il.dmobile.recipes;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +17,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -27,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecipesAdapter adapter;
     private int STORAGE_PERMISSION_CODE = 1;
+    GoogleSignInAccount account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Storage permission
         if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(MainActivity.this, "You have already granted this permission!",
-                    Toast.LENGTH_SHORT).show(); // if permission was already granted - keep on going
-        } else {
-            requestStoragePermission(); // if not request permission
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestStoragePermission();
         }
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            account = (GoogleSignInAccount) extras.get("user");
+        }
+
+        TextView welcome = findViewById(R.id.welcomeTV);
+        welcome.setText("Welcome, " + account.getDisplayName());
 
         DataPersistencyHelper.Context = getApplicationContext();
         List<Recipes> recipes = DataPersistencyHelper.LoadData();

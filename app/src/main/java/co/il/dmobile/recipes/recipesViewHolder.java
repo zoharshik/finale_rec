@@ -1,4 +1,4 @@
-package co.il.dmobile.myapplication_2;
+package co.il.dmobile.recipes;
 
 import android.view.View;
 import android.widget.ImageView;

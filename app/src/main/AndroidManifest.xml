@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.il.dmobile.myapplication_2">
+    package="co.il.dmobile.recipes">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -9,16 +9,18 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo1"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication2">
         <activity
-            android:name=".landigpage"
+            android:name="co.il.dmobile.recipes.landigpage"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +29,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddRecipesActivity"
+            android:name="co.il.dmobile.recipes.AddRecipesActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name="co.il.dmobile.recipes.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="co.il.dmobile.recipes.MainActivity"
             android:exported="false">
         </activity>
     </application>
