@@ -52,13 +52,13 @@ public class AddRecipesActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText Brand = findViewById(R.id.Level);
-                EditText Model = findViewById(R.id.Time);
-                EditText Year = findViewById(R.id.Name);
-                EditText Price = findViewById(R.id.price);
-                EditText Cooking = findViewById(R.id.Cooking);
+                EditText recipeLevel = findViewById(R.id.Level);
+                EditText recipeTime = findViewById(R.id.Time);
+                EditText recipeName = findViewById(R.id.Name);
+                EditText recipePrice = findViewById(R.id.price);
+                EditText recipeCooking = findViewById(R.id.Cooking);
                 Recipes recipes;
-                recipes = new Recipes(R.drawable.pizza,Brand.getText().toString(), Model.getText ().toString(),Year.getText().toString(),Price.getText().toString(),Cooking.getText().toString());
+                recipes = new Recipes(R.drawable.pizza,recipeLevel.getText().toString(), recipeTime.getText ().toString(),recipeName.getText().toString(),recipePrice.getText().toString(),recipeCooking.getText().toString());
                 if(contentURI != null){
                     String uri = contentURI.toString();
                     recipes.setUri(uri);
@@ -130,7 +130,7 @@ public class AddRecipesActivity extends AppCompatActivity {
             contentURI = data.getData();
 
         } else if (requestCode == CAMERA) {
-            System.out.println("contentUri: ");
+            System.out.println("contentUri: " + contentURI);
             System.out.println(contentURI);
         }
     }
